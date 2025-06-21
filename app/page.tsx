@@ -1,103 +1,137 @@
+"use client";
+
+import FluidCursor from "@/components/FluidCursor";
+import { Button } from "@/components/ui/button";
+//import WelcomeModal from '@/components/welcome-modal';
+import { motion } from "framer-motion";
+import {
+  ArrowRight,
+  BriefcaseBusiness,
+  Laugh,
+  Layers,
+  PartyPopper,
+  UserRoundSearch,
+} from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
+//import GitHubButton from 'react-github-btn';
+
+/* ---------- quick-question data ---------- */
+const questions = {
+  Me: "Who are you? I want to know more about you.",
+  Projects: "What are your projects? What are you working on right now?",
+  Skills: "What are your skills? Give me a list of your soft and hard skills.",
+  Fun: "What’s the craziest thing you’ve ever done? What are your hobbies?",
+  Contact:
+    'How can I reach you? What kind of project would make you say "yes" immediately?',
+} as const;
+
+const questionConfig = [
+  { key: "Me", color: "#329696", icon: Laugh },
+  { key: "Projects", color: "#3E9858", icon: BriefcaseBusiness },
+  { key: "Skills", color: "#856ED9", icon: Layers },
+  { key: "Fun", color: "#B95F9D", icon: PartyPopper },
+  { key: "Contact", color: "#C19433", icon: UserRoundSearch },
+] as const;
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [input, setInput] = useState("");
+  const router = useRouter();
+  const inputRef = useRef<HTMLInputElement>(null);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+  // need to implement
+  const goToChat = (query: string) => {};
+
+  /* hero animations (unchanged) */
+  const topElementVariants = {
+    hidden: { opacity: 0, y: -60 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { type: "ease", duration: 0.8 },
+    },
+  };
+  const bottomElementVariants = {
+    hidden: { opacity: 0, y: 80 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { type: "ease", duration: 0.8, delay: 0.2 },
+    },
+  };
+
+  return (
+    <div className="flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 pb-10 md:pb-20">
+      {/* header */}
+      <motion.div
+        className="z-1 mb-8 flex flex-col items-center text-center md:mb-12 mt-24 md:mt-4"
+        variants={topElementVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <h2 className="text-secondary-foreground mt-1 text-xl font-semibold md:text-2xl">
+          Hey, I'm Manar 👋
+        </h2>
+        <h1 className="text-4xl font-bold sm:text-5xl md:text-6xl lg:text-7xl">
+          AI portfolio
+        </h1>
+      </motion.div>
+
+      {/* input + quick buttons */}
+      <motion.div
+        variants={bottomElementVariants}
+        initial="hidden"
+        animate="visible"
+        className="z-10 mt-4 flex w-full flex-col items-center justify-center md:px-0"
+      >
+        {/* free-form question */}
+        <form
+          // onSubmit={(e) => {
+          //   e.preventDefault();
+          //   if (input.trim()) goToChat(input.trim());
+          // }}
+          onSubmit={(e) => {}}
+          className="relative w-full max-w-lg"
+        >
+          <div className="mx-auto flex items-center rounded-full border border-neutral-200 bg-white/30 py-2.5 pr-2 pl-6 backdrop-blur-lg transition-all hover:border-neutral-300 dark:border-neutral-700 dark:bg-neutral-800 dark:hover:border-neutral-600">
+            <input
+              ref={inputRef}
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              placeholder="Ask me anything…"
+              className="w-full border-none bg-transparent text-base text-neutral-800 placeholder:text-neutral-500 focus:outline-none dark:text-neutral-200 dark:placeholder:text-neutral-500"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            <button
+              type="submit"
+              disabled={!input.trim()}
+              aria-label="Submit question"
+              className="flex items-center justify-center rounded-full bg-[#0171E3] p-2.5 text-white transition-colors hover:bg-blue-600 disabled:opacity-70 dark:bg-blue-600 dark:hover:bg-blue-700"
+            >
+              <ArrowRight className="h-5 w-5" />
+            </button>
+          </div>
+        </form>
+
+        {/* quick-question grid */}
+        <div className="mt-4 grid w-full max-w-2xl grid-cols-1 gap-3 sm:grid-cols-3 md:grid-cols-5">
+          {questionConfig.map(({ key, color, icon: Icon }) => (
+            <Button
+              key={key}
+              onClick={() => goToChat(questions[key])}
+              variant="outline"
+              className="shadow-none border-border hover:bg-border/30 aspect-square w-full cursor-pointer rounded-2xl border bg-white/30 py-8 backdrop-blur-lg active:scale-95 md:p-10"
+            >
+              <div className="flex h-full flex-col items-center justify-center gap-1 text-gray-700">
+                <Icon size={22} strokeWidth={2} color={color} />
+                <span className="text-xs font-medium sm:text-sm">{key}</span>
+              </div>
+            </Button>
+          ))}
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </motion.div>
+      <FluidCursor />
     </div>
   );
 }
