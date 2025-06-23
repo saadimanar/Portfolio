@@ -41,7 +41,9 @@ export default function Home() {
   const inputRef = useRef<HTMLInputElement>(null);
 
   // need to implement
-  const goToChat = (query: string) => {};
+  // const goToChat = (query: string) => {};
+  const goToChat = (query: string) =>
+    router.push(`/chat?query=${encodeURIComponent(query)}`);
 
   /* hero animations (unchanged) */
   const topElementVariants = {
@@ -87,11 +89,10 @@ export default function Home() {
       >
         {/* free-form question */}
         <form
-          // onSubmit={(e) => {
-          //   e.preventDefault();
-          //   if (input.trim()) goToChat(input.trim());
-          // }}
-          onSubmit={(e) => {}}
+          onSubmit={(e) => {
+            e.preventDefault();
+            if (input.trim()) goToChat(input.trim());
+          }}
           className="relative w-full max-w-lg"
         >
           <div className="mx-auto flex items-center rounded-full border border-neutral-200 bg-white/30 py-2.5 pr-2 pl-6 backdrop-blur-lg transition-all hover:border-neutral-300 dark:border-neutral-700 dark:bg-neutral-800 dark:hover:border-neutral-600">
