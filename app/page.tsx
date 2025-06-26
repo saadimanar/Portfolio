@@ -2,7 +2,6 @@
 
 import FluidCursor from "@/components/FluidCursor";
 import { Button } from "@/components/ui/button";
-//import WelcomeModal from '@/components/welcome-modal';
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -15,7 +14,6 @@ import {
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-//import GitHubButton from 'react-github-btn';
 
 /* ---------- quick-question data ---------- */
 const questions = {
@@ -108,7 +106,7 @@ export default function Home() {
               type="submit"
               disabled={!input.trim()}
               aria-label="Submit question"
-              className="flex items-center justify-center rounded-full bg-[#0171E3] p-2.5 text-white transition-colors hover:bg-blue-600 disabled:opacity-70 dark:bg-blue-600 dark:hover:bg-blue-700"
+              className="flex items-center justify-center rounded-full bg-black p-2.5 text-white transition-colors hover:bg-blue-600 disabled:opacity-70 dark:bg-blue-600 dark:hover:bg-blue-700"
             >
               <ArrowRight className="h-5 w-5" />
             </button>
