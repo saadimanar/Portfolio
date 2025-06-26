@@ -8,6 +8,9 @@
 // import Skills from '../skills';
 // import Sports from '../sport';
 import Profile from "../Profile";
+import Contact from "../Contact";
+import Skills from "../Skills";
+import Resume from "../Resume";
 
 interface ToolRendererProps {
   toolInvocations: any[];
@@ -35,57 +38,36 @@ export default function ToolRenderer({
               </div>
             );
 
-          //   case 'getPresentation':
-          //     return (
-          //       <div
-          //         key={toolCallId}
-          //         className="w-full overflow-hidden rounded-lg"
-          //       >
-          //         <Presentation />
-          //       </div>
-          //     );
+          // case 'getProjects':
+          //   return (
+          //     <div
+          //       key={toolCallId}
+          //       className="w-full overflow-hidden rounded-lg"
+          //     >
+          //       <AllProjects />
+          //     </div>
+          //   );
 
-          //   case 'getResume':
-          //     return (
-          //       <div key={toolCallId} className="w-full rounded-lg">
-          //         <Resume />
-          //       </div>
-          //     );
+          case "getResume":
+            return (
+              <div key={toolCallId} className="w-full rounded-lg">
+                <Resume />
+              </div>
+            );
 
-          //   case 'getContact':
-          //     return (
-          //       <div key={toolCallId} className="w-full rounded-lg">
-          //         <Contact />
-          //       </div>
-          //     );
+          case "getContact":
+            return (
+              <div key={toolCallId} className="w-full rounded-lg">
+                <Contact />
+              </div>
+            );
 
-          //   case 'getSkills':
-          //     return (
-          //       <div key={toolCallId} className="w-full rounded-lg">
-          //         <Skills />
-          //       </div>
-          //     );
-
-          //   case 'getSports':
-          //     return (
-          //       <div key={toolCallId} className="w-full rounded-lg">
-          //         <Sports />
-          //       </div>
-          //     );
-
-          //   case 'getCrazy':
-          //     return (
-          //       <div key={toolCallId} className="w-full rounded-lg">
-          //         <Crazy />
-          //       </div>
-          //     );
-
-          //   case 'getInternship':
-          //     return (
-          //       <div key={toolCallId} className="w-full rounded-lg">
-          //         <InternshipCard />
-          //       </div>
-          //     );
+          case "getSkills":
+            return (
+              <div key={toolCallId} className="w-full rounded-lg">
+                <Skills />
+              </div>
+            );
 
           // Default renderer for other tools
           default:

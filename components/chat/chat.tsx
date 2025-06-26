@@ -1,63 +1,18 @@
-// "use client";
-
-// import { useChat } from "@ai-sdk/react";
-
-// const MOTION_CONFIG = {
-//   initial: { opacity: 0, y: 20 },
-//   animate: { opacity: 1, y: 0 },
-//   exit: { opacity: 0, y: 20 },
-//   transition: {
-//     duration: 0.3,
-//     ease: 'easeOut',
-//   },
-// };
-
-// export default function Chat() {
-//   const { messages, input, handleInputChange, handleSubmit } = useChat();
-//   return (
-//     <div className="flex flex-col w-full max-w-md py-24 mx-auto stretch">
-//       {messages.map((message) => (
-//         <div key={message.id} className="whitespace-pre-wrap">
-//           {message.role === "user" ? "User: " : "AI: "}
-//           {message.parts.map((part, i) => {
-//             switch (part.type) {
-//               case "text":
-//                 return <div key={`${message.id}-${i}`}>{part.text}</div>;
-//             }
-//           })}
-//         </div>
-//       ))}
-
-//       <form onSubmit={handleSubmit}>
-//         <input
-//           className="fixed dark:bg-zinc-900 bottom-0 w-full max-w-md p-2 mb-8 border border-zinc-300 dark:border-zinc-800 rounded shadow-xl"
-//           value={input}
-//           placeholder="Say something..."
-//           onChange={handleInputChange}
-//         />
-//       </form>
-//     </div>
-//   );
-// }
-
 "use client";
 import { useChat } from "@ai-sdk/react";
 import { AnimatePresence, motion } from "framer-motion";
-import dynamic from "next/dynamic";
 import { useSearchParams } from "next/navigation";
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 // import { toast } from 'sonner';
 
 // Component imports
 import ChatBottombar from "@/components/chat/chat-bottombar";
-//import ChatLanding from '@/components/chat/chat-landing';
-import ChatMessageContent from "@/components/chat/chat-message-content";
+import ChatSidebar from "@/components/chat/chat-sidebar";
 import { SimplifiedChatView } from "@/components/chat/simple-chat-view";
 import {
   ChatBubble,
   ChatBubbleMessage,
 } from "@/components/ui/chat/chat-bubble";
-import { Info } from "lucide-react";
 // import HelperBoost from './HelperBoost';
 
 const MOTION_CONFIG = {
@@ -77,6 +32,7 @@ const Chat = () => {
   const [autoSubmitted, setAutoSubmitted] = useState(false);
   const [loadingSubmit, setLoadingSubmit] = useState(false);
   const [isTalking, setIsTalking] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const {
     messages,
@@ -229,6 +185,12 @@ const Chat = () => {
 
   return (
     <div className="relative h-screen overflow-hidden">
+      {/* Sidebar */}
+      <ChatSidebar
+        isOpen={sidebarOpen}
+        onToggle={() => setSidebarOpen(!sidebarOpen)}
+      />
+
       {/* Main Content Area */}
       <div className="container mx-auto flex h-full max-w-3xl flex-col">
         {/* Scrollable Chat Content */}
