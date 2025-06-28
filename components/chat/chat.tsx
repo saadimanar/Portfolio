@@ -13,7 +13,16 @@ import {
   ChatBubble,
   ChatBubbleMessage,
 } from "@/components/ui/chat/chat-bubble";
-// import HelperBoost from './HelperBoost';
+
+// const MOTION_CONFIG = {
+//   initial: { opacity: 0, y: 20 },
+//   animate: { opacity: 1, y: 0 },
+//   exit: { opacity: 0, y: 20 },
+//   transition: {
+//     duration: 0.3,
+//     ease: "easeOut",
+//   },
+// };
 
 const MOTION_CONFIG = {
   initial: { opacity: 0, y: 20 },
@@ -23,7 +32,7 @@ const MOTION_CONFIG = {
     duration: 0.3,
     ease: "easeOut",
   },
-};
+} as const;
 
 const Chat = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null);

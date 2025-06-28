@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import React from "react";
+import type { Variants } from "framer-motion";
 
 export function Profile() {
   // Personal information
@@ -16,8 +17,7 @@ export function Profile() {
     src: "/profile_img.jpg",
   };
 
-  // Animation variants for text elements
-  const textVariants = {
+  const textVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
@@ -27,7 +27,7 @@ export function Profile() {
   };
 
   // Animation for the entire paragraph rather than word-by-word
-  const paragraphAnimation = {
+  const paragraphAnimation: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
@@ -58,11 +58,6 @@ export function Profile() {
                 width={500}
                 height={500}
                 className="h-full w-full object-cover object-center"
-                onError={(e) => {
-                  // Fallback to placeholder if image fails to load
-                  const target = e.target as HTMLImageElement;
-                  target.src = profile.fallbackSrc;
-                }}
               />
             </motion.div>
           </div>

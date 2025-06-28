@@ -3,6 +3,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { motion } from "framer-motion";
+import type { Variants } from "framer-motion";
 import { Code, Cpu, Users, Sparkles } from "lucide-react";
 
 const Skills = () => {
@@ -52,7 +53,7 @@ const Skills = () => {
   ];
 
   // Animation variants
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -63,7 +64,7 @@ const Skills = () => {
     },
   };
 
-  const cardVariants = {
+  const cardVariants: Variants = {
     hidden: { opacity: 0, y: 30, scale: 0.95 },
     visible: {
       opacity: 1,
@@ -79,7 +80,7 @@ const Skills = () => {
     },
   };
 
-  const badgeVariants = {
+  const badgeVariants: Variants = {
     hidden: { opacity: 0, scale: 0.8, y: 10 },
     visible: {
       opacity: 1,
@@ -95,7 +96,7 @@ const Skills = () => {
     },
   };
 
-  const headerVariants = {
+  const headerVariants: Variants = {
     hidden: { opacity: 0, y: -20 },
     visible: {
       opacity: 1,
