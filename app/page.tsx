@@ -3,6 +3,7 @@
 import FluidCursor from "@/components/FluidCursor";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import InfoDialog from "@/components/InfoDialog";
 import {
   ArrowRight,
   BriefcaseBusiness,
@@ -80,6 +81,7 @@ export default function Home() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 pb-10 md:pb-20">
       {/* header */}
+      <InfoDialog />
       <motion.div
         className="z-1 mb-8 flex flex-col items-center text-center md:mb-12 mt-24 md:mt-4"
         variants={topElementVariants}
