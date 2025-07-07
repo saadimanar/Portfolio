@@ -2,6 +2,7 @@ import Profile from "../Profile";
 import Contact from "../Contact";
 import Skills from "../Skills";
 import Resume from "../Resume";
+import Projects from "../Projects";
 
 interface ToolRendererProps {
   toolInvocations: any[];
@@ -29,15 +30,15 @@ export default function ToolRenderer({
               </div>
             );
 
-          // case 'getProjects':
-          //   return (
-          //     <div
-          //       key={toolCallId}
-          //       className="w-full overflow-hidden rounded-lg"
-          //     >
-          //       <AllProjects />
-          //     </div>
-          //   );
+          case "getProjects":
+            return (
+              <div
+                key={toolCallId}
+                className="w-full overflow-hidden rounded-lg"
+              >
+                <Projects />
+              </div>
+            );
 
           case "getResume":
             return (
