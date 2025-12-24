@@ -13,7 +13,7 @@ export function Profile() {
     location: "Haifa, Israel",
     // Add a newline character after the emoji
     description:
-      "Hey 👋\nI'm Manar Saadi, a software developer based in Israel and a Computer Science graduate from the Technion. I have hands-on experience working in a startup environment at Playgen.io, where I built and maintained production web platforms and AI-generated games. I'm passionate about AI, building smart and clean user experiences, and turning ideas into real products — especially in tech, SaaS, and entrepreneurship.",
+      "Hey 👋\nI'm Manar Saadi, a software developer based in Israel and a Computer Science graduate from the Technion. I have hands-on experience working in a startup environment at Playgent, where I built and maintained production web platforms and AI-generated games. I'm passionate about AI, building smart and clean user experiences, and turning ideas into real products — especially in tech, SaaS, and entrepreneurship.",
     src: "/profile_img.jpg",
   };
 
