@@ -9,11 +9,11 @@ export function Profile() {
   // Personal information
   const profile = {
     name: "Manar Saadi",
-    age: "25 years old",
+    age: "26 years old",
     location: "Haifa, Israel",
     // Add a newline character after the emoji
     description:
-      "Hey 👋\nI'm Manar. I'm a computer science graduate from the Techion. Worked as a software developer for 10 months at playgen.io. I'm passionate about AI, tech, Entrepreneurship and SaaS tech.",
+      "Hey 👋\nI'm Manar Saadi, a software developer based in Israel and a Computer Science graduate from the Technion. I have hands-on experience working in a startup environment at Playgen.io, where I built and maintained production web platforms and AI-generated games. I'm passionate about AI, building smart and clean user experiences, and turning ideas into real products — especially in tech, SaaS, and entrepreneurship.",
     src: "/profile_img.jpg",
   };
 
@@ -96,7 +96,7 @@ export function Profile() {
             transition={{ delay: 0.6, duration: 0.5 }}
             className="mt-4 flex flex-wrap gap-2"
           >
-            {["AI", "Developer", "Playgen.io", "Tennis", "Technion"].map(
+            {["AI", "Developer", "Playgent", "Tennis", "Technion"].map(
               (tag) => (
                 <span
                   key={tag}
