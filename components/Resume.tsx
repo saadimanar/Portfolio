@@ -8,7 +8,7 @@ export function Resume() {
   // Resume details
   const resumeDetails = {
     title: "Manar's Resume",
-    description: "Software Developer",
+    description: "Software Engineer",
     fileType: "PDF",
     lastUpdated: "May 2025",
     fileSize: "0.5 MB",
