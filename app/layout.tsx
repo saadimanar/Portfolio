@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
+import "@/lib/localStorage-polyfill";
 import "./globals.css";
 
 // Load Inter font for non-Apple devices
